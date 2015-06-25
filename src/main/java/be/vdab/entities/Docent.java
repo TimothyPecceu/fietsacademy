@@ -26,6 +26,44 @@ public class Docent implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Geslacht geslacht;
 	
+	public Docent(String voornaam, String familienaam, BigDecimal wedde, Geslacht geslacht, long rijksRegisterNr){
+		setVoornaam(voornaam);
+		setFamilienaam(familienaam);
+		setWedde(wedde);
+		setGeslacht(geslacht);
+		setRijksRegisterNr(rijksRegisterNr);
+	}
+	
+	protected Docent(){}
+	
+	public static boolean isVoornaamValid(String voornaam){
+		return voornaam != null && ! voornaam.isEmpty();
+	}
+	
+	public static boolean isFamilienaamValid(String familienaam){
+		return familienaam != null && ! familienaam.isEmpty();
+	}
+
+	public void setVoornaam(String voornaam) {
+		this.voornaam = voornaam;
+	}
+
+	public void setFamilienaam(String familienaam) {
+		this.familienaam = familienaam;
+	}
+
+	public void setWedde(BigDecimal wedde) {
+		this.wedde = wedde;
+	}
+
+	public void setRijksRegisterNr(long rijksRegisterNr) {
+		this.rijksRegisterNr = rijksRegisterNr;
+	}
+
+	public void setGeslacht(Geslacht geslacht) {
+		this.geslacht = geslacht;
+	}
+	
 	public long getId() {
 		return id;
 	}
@@ -48,4 +86,5 @@ public class Docent implements Serializable{
 	public String getNaam(){
 		return voornaam + ' ' + familienaam;
 	}
+	
 }
