@@ -32,4 +32,18 @@ public class DocentService {
 			entityManager.close();
 		}
 	}
+	
+	public void delete(long id){
+		EntityManager entityManager = JPAFilter.getEntityManager();
+		try{
+			entityManager.getTransaction().begin();
+			docentDAO.delete(id, entityManager);
+			entityManager.getTransaction().commit();
+		}catch (RuntimeException ex){
+			entityManager.getTransaction().rollback();
+			throw ex;
+		}finally{
+			entityManager.close();
+		}
+	}
 }

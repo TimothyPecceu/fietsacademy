@@ -16,7 +16,7 @@ import be.vdab.enums.Geslacht;
 import be.vdab.services.DocentService;
 
 @WebServlet("/docenten/toevoegen.htm")
-public class DocentToevoegenServlet extends HttpServlet {
+public class ToevoegenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/docenten/toevoegen.jsp";
 	private static final String REDIRECT_URL="%s/docenten/zoeken.htm?id=%d";

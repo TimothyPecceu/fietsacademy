@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import be.vdab.services.DocentService;
 
 @WebServlet("/docenten/zoeken.htm")
-public class ZoekDocentServlet extends HttpServlet {
+public class ZoekenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/docenten/zoeken.jsp";
 	private final transient DocentService docentService = new DocentService();

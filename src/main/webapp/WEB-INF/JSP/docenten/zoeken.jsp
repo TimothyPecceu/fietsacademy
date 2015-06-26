@@ -1,6 +1,6 @@
 <%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="v" uri="http://vdab.be/tags"%>
 <!doctype html>
 <html>
@@ -18,7 +18,14 @@
 </c:if>
 	<c:if test="${not empty docent}">
 	${docent.geslacht == 'MAN' ? '&#x2642;' : '&#x2640;'}
-	${docent.naam}, wedde: &euro; <fmt:formatNumber value='${docent.wedde}'/>
+	${docent.naam}, wedde: &euro; <fmt:formatNumber value='${docent.wedde}' />
+		<h2>Acties</h2>
+		<c:url value='/docenten/verwijderen.htm' var='verwijderURL'>
+			<c:param name="id" value='${docent.id}'></c:param>
+		</c:url>
+		<form action="${verwijderURL}" method='post'>
+			<input type='submit' value='Verwijderen'>
+		</form>
 	</c:if>
 </body>
 </html>
