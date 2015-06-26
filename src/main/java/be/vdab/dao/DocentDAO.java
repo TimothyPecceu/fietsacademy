@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import be.vdab.entities.Docent;
+import be.vdab.valueobjects.AantalDocentenPerWedde;
 import be.vdab.valueobjects.VoornaamEnId;
 
 public class DocentDAO extends AbstractDOAO{
@@ -38,5 +39,10 @@ public class DocentDAO extends AbstractDOAO{
 	
 	public BigDecimal findMaxWedde(){
 		return getEntityManager().createQuery("select max(d.wedde) from Docent d", BigDecimal.class).getSingleResult();
+	}
+	
+	public List<AantalDocentenPerWedde> findAantalDocentenPerWedde(){
+		return getEntityManager().createQuery("select new be.vdab.valueobjects.AantalDocentenPerWedde(d.wedde,count(d)) "
+				+ "from Docent d group by d.wedde", AantalDocentenPerWedde.class).getResultList();
 	}
 }

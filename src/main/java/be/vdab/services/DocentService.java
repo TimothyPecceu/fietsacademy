@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import be.vdab.dao.DocentDAO;
 import be.vdab.entities.Docent;
 import be.vdab.filters.JPAFilter;
+import be.vdab.valueobjects.AantalDocentenPerWedde;
 import be.vdab.valueobjects.VoornaamEnId;
 
 public class DocentService {
@@ -46,5 +47,9 @@ public class DocentService {
 	
 	public BigDecimal findMaxWedde(){
 		return docentDAO.findMaxWedde();
+	}
+	
+	public List<AantalDocentenPerWedde> findAantalDocentenPerWedde(){
+		return docentDAO.findAantalDocentenPerWedde();
 	}
 }
