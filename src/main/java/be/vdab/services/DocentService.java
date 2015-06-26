@@ -1,6 +1,7 @@
 package be.vdab.services;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -32,5 +33,9 @@ public class DocentService {
 		docentDAO.beginTransaction();
 		docentDAO.read(id).opslag(percentage);
 		docentDAO.commit();
+	}
+	
+	public List<Docent> findByWeddeBetween(BigDecimal van, BigDecimal tot){
+		return docentDAO.findByWeddeBetween(van, tot);
 	}
 }

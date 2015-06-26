@@ -2,7 +2,9 @@
 <%@taglib uri='http://vdab.be/tags' prefix='v'%>
 <!doctype html>
 <html>
+<head>
 <v:head title="Opslag" />
+</head>
 <body>
 	<v:menu />
 	<h1>Opslag</h1>

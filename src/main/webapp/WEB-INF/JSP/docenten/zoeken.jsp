@@ -4,7 +4,9 @@
 <%@taglib prefix="v" uri="http://vdab.be/tags"%>
 <!doctype html>
 <html>
+<head>
 <v:head title='${empty docent ? "Docent zoeken" : docent.naam}' />
+</head>
 <body>
 	<v:menu />
 	<h1>Docent Zoeken</h1>

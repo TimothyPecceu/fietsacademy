@@ -3,7 +3,9 @@
 <%@taglib prefix="v" uri="http://vdab.be/tags"%>
 <!doctype html>
 <html>
+<head>
 <v:head title="Docent Toevoegen" />
+</head>
 <body>
 	<v:menu />
 	<h1>Docent Toevoegen</h1>
