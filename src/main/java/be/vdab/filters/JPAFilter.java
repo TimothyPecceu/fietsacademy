@@ -16,23 +16,37 @@ import javax.servlet.annotation.WebFilter;
 @WebFilter("*.htm")
 public class JPAFilter implements Filter {
 
-	private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("fietsacademy");
-	
+	private static final EntityManagerFactory entityManagerFactory = Persistence
+			.createEntityManagerFactory("fietsacademy");
+	private static final ThreadLocal<EntityManager> entityManagers = new ThreadLocal<>();
+
 	@Override
-	public void init(FilterConfig filterConfig) throws ServletException{}
-	
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException{
-		request.setCharacterEncoding("UTF-8");
-		chain.doFilter(request, response);
+	public void init(FilterConfig filterConfig) throws ServletException {
 	}
-	
+
 	@Override
-	public void destroy(){
+	public void doFilter(ServletRequest request, ServletResponse response,
+			FilterChain chain) throws ServletException, IOException {
+		entityManagers.set(entityManagerFactory.createEntityManager());
+		try {
+			request.setCharacterEncoding("UTF-8");
+			chain.doFilter(request, response);
+		} finally {
+			EntityManager entityManager = entityManagers.get();
+			if (entityManager.getTransaction().isActive()) {
+				entityManager.getTransaction().rollback();
+			}
+			entityManager.close();
+			entityManagers.remove();
+		}
+	}
+
+	@Override
+	public void destroy() {
 		entityManagerFactory.close();
 	}
-	
-	public static EntityManager getEntityManager(){
-		return entityManagerFactory.createEntityManager();
+
+	public static EntityManager getEntityManager() {
+		return entityManagers.get();
 	}
 }
