@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import be.vdab.entities.Docent;
+import be.vdab.valueobjects.VoornaamEnId;
 
 public class DocentDAO extends AbstractDOAO{
 	
@@ -29,5 +30,9 @@ public class DocentDAO extends AbstractDOAO{
 				.setFirstResult(vanafRij)
 				.setMaxResults(aantalRijen)
 				.getResultList();
+	}
+	
+	public List<VoornaamEnId> findVoornamen(){
+		return getEntityManager().createQuery("select new be.vdab.valueobjects.VoornaamEnId(d.id, d.voornaam) from Docent d", VoornaamEnId.class).getResultList();
 	}
 }

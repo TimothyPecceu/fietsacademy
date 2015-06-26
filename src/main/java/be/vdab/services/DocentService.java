@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import be.vdab.dao.DocentDAO;
 import be.vdab.entities.Docent;
 import be.vdab.filters.JPAFilter;
+import be.vdab.valueobjects.VoornaamEnId;
 
 public class DocentService {
 	
@@ -37,5 +38,9 @@ public class DocentService {
 	
 	public List<Docent> findByWeddeBetween(BigDecimal van, BigDecimal tot, int vanafRij, int aantalRijen){
 		return docentDAO.findByWeddeBetween(van, tot, vanafRij, aantalRijen);
+	}
+	
+	public List<VoornaamEnId> findVoornamen(){
+		return docentDAO.findVoornamen();
 	}
 }
