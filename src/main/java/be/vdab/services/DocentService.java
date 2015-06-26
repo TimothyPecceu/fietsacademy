@@ -43,4 +43,8 @@ public class DocentService {
 	public List<VoornaamEnId> findVoornamen(){
 		return docentDAO.findVoornamen();
 	}
+	
+	public BigDecimal findMaxWedde(){
+		return docentDAO.findMaxWedde();
+	}
 }

@@ -35,4 +35,8 @@ public class DocentDAO extends AbstractDOAO{
 	public List<VoornaamEnId> findVoornamen(){
 		return getEntityManager().createQuery("select new be.vdab.valueobjects.VoornaamEnId(d.id, d.voornaam) from Docent d", VoornaamEnId.class).getResultList();
 	}
+	
+	public BigDecimal findMaxWedde(){
+		return getEntityManager().createQuery("select max(d.wedde) from Docent d", BigDecimal.class).getSingleResult();
+	}
 }
