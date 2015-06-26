@@ -25,7 +25,7 @@ public class DocentDAO extends AbstractDOAO{
 	}
 	
 	public List<Docent> findByWeddeBetween(BigDecimal van, BigDecimal tot, int vanafRij, int aantalRijen){
-		return getEntityManager().createQuery("select d from Docent d where d.wedde between :van and :tot order by d.wedde desc, d.id", Docent.class)
+		return getEntityManager().createNamedQuery("Docent.findByWeddeBetween", Docent.class)
 				.setParameter("van", van)
 				.setParameter("tot", tot)
 				.setFirstResult(vanafRij)
